@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "amfie/checklist",
+	"title": "Liste d’avantages + boutons",
+	"category": "amfie",
+	"icon": "yes-alt",
+	"description": "Titre, liste à coches (une ligne = un item) et deux boutons.",
+	"textdomain": "amfie-blocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"items": {
+			"type": "string",
+			"default": ""
+		},
+		"primaryLabel": {
+			"type": "string",
+			"default": ""
+		},
+		"primaryUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"secondaryLabel": {
+			"type": "string",
+			"default": ""
+		},
+		"secondaryUrl": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"align": false,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"editorScript": "amfie-blocks-editor",
+	"style": "amfie-blocks-style",
+	"render": "file:./render.php"
+}

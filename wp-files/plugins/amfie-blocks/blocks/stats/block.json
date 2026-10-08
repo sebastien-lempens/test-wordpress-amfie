@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "amfie/stats",
+	"title": "Chiffres clés",
+	"category": "amfie",
+	"icon": "chart-bar",
+	"description": "Bandeau de statistiques.",
+	"textdomain": "amfie-blocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"align": false,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"editorScript": "amfie-blocks-editor",
+	"style": "amfie-blocks-style",
+	"render": "file:./render.php"
+}

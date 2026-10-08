@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "amfie/contact-card",
+	"title": "Coordonnées",
+	"category": "amfie",
+	"icon": "location",
+	"description": "Adresse, téléphone, e-mail et réseaux.",
+	"textdomain": "amfie-blocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"address": {
+			"type": "string",
+			"default": ""
+		},
+		"phone": {
+			"type": "string",
+			"default": ""
+		},
+		"email": {
+			"type": "string",
+			"default": ""
+		},
+		"linkedin": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"align": false,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"editorScript": "amfie-blocks-editor",
+	"style": "amfie-blocks-style",
+	"render": "file:./render.php"
+}

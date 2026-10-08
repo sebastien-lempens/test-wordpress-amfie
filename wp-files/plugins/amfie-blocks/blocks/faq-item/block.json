@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "amfie/faq-item",
+	"title": "Question FAQ",
+	"category": "amfie",
+	"icon": "format-chat",
+	"description": "Une question et sa réponse.",
+	"textdomain": "amfie-blocks",
+	"attributes": {
+		"question": {
+			"type": "string",
+			"default": ""
+		},
+		"answer": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"align": false,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"editorScript": "amfie-blocks-editor",
+	"style": "amfie-blocks-style",
+	"render": "file:./render.php",
+	"parent": [
+		"amfie/faq"
+	]
+}

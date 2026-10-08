@@ -1,0 +1,71 @@
+name: wp-headless
+
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  wordpress:
+    build:
+      context: .
+      args:
+        WPGRAPHQL_VERSION: "2.20.0"
+        GUTENBERG_REF: "4dd439c8cf3939c0e605119d27beac3f77058145"
+    restart: unless-stopped
+    expose:
+      - "80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_AUTH_KEY: ${WORDPRESS_AUTH_KEY}
+      WORDPRESS_SECURE_AUTH_KEY: ${WORDPRESS_SECURE_AUTH_KEY}
+      WORDPRESS_LOGGED_IN_KEY: ${WORDPRESS_LOGGED_IN_KEY}
+      WORDPRESS_NONCE_KEY: ${WORDPRESS_NONCE_KEY}
+      WORDPRESS_AUTH_SALT: ${WORDPRESS_AUTH_SALT}
+      WORDPRESS_SECURE_AUTH_SALT: ${WORDPRESS_SECURE_AUTH_SALT}
+      WORDPRESS_LOGGED_IN_SALT: ${WORDPRESS_LOGGED_IN_SALT}
+      WORDPRESS_NONCE_SALT: ${WORDPRESS_NONCE_SALT}
+      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-}
+      WP_ENVIRONMENT_TYPE: ${WP_ENVIRONMENT_TYPE:-production}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-files/wp-config.php:/var/www/html/wp-config.php
+      - ./wp-files/plugins/amfie-blocks:/var/www/html/wp-content/plugins/amfie-blocks
+      - ./wp-files/twentytwentyfive:/var/www/html/wp-content/themes/twentytwentyfive
+
+  # One-off tooling only (not started by `up -d`):
+  #   docker compose run --rm wpcli <command>
+  wpcli:
+    image: wordpress:cli-php8.4
+    profiles: ["tools"]
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - wp_data:/var/www/html
+    depends_on:
+      - db
+      - wordpress
+
+volumes:
+  db_data:
+  wp_data:

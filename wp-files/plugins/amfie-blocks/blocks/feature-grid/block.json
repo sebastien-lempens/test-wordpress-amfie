@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "amfie/feature-grid",
+	"title": "Grille de cartes",
+	"category": "amfie",
+	"icon": "screenoptions",
+	"description": "Titre + grille de cartes (produits, principes, avantages…).",
+	"textdomain": "amfie-blocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"intro": {
+			"type": "string",
+			"default": ""
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"variant": {
+			"type": "string",
+			"default": "cards"
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"align": false,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"editorScript": "amfie-blocks-editor",
+	"style": "amfie-blocks-style",
+	"render": "file:./render.php"
+}

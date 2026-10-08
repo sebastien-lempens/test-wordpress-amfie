@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "amfie/page-header",
+	"title": "En-tête de page",
+	"category": "amfie",
+	"icon": "heading",
+	"description": "Titre de page, sous-titre et fil d’Ariane.",
+	"textdomain": "amfie-blocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"subtitle": {
+			"type": "string",
+			"default": ""
+		},
+		"crumbLabel": {
+			"type": "string",
+			"default": ""
+		},
+		"crumbUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"homeLabel": {
+			"type": "string",
+			"default": "Home"
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"className": true,
+		"align": false,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"editorScript": "amfie-blocks-editor",
+	"style": "amfie-blocks-style",
+	"render": "file:./render.php"
+}

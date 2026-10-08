@@ -1,0 +1,102 @@
+/* AMFIE Blocks — styles de base (front + éditeur). Volontairement sobres : le design final se fait côté thème. */
+:root {
+	--amfie-navy: #002a6c;
+	--amfie-blue: #0b5cab;
+	--amfie-bordeaux: #8a3556;
+	--amfie-light: #eaf3fa;
+	--amfie-text: #1b2a41;
+	--amfie-radius: 6px;
+}
+.amfie-container { max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+[class^="wp-block-amfie-"], [class*=" wp-block-amfie-"] { color: var(--amfie-text); }
+
+/* Boutons */
+.amfie-btn { display: inline-block; padding: .6em 1.2em; border: 1px solid var(--amfie-blue); border-radius: var(--amfie-radius); text-decoration: none; font-weight: 600; line-height: 1.2; }
+.amfie-btn--solid { background: var(--amfie-blue); color: #fff; }
+.amfie-btn--outline { background: transparent; color: inherit; border-color: currentColor; }
+.amfie-btn--ghost { border-color: transparent; padding-inline: 0; color: var(--amfie-blue); }
+.amfie-btn--ghost::after { content: " →"; }
+.amfie-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+
+/* Page header */
+.amfie-page-header { background: var(--amfie-light); padding: 40px 0; }
+.amfie-page-header__title { margin: .3em 0 0; color: var(--amfie-navy); }
+.amfie-page-header__subtitle { font-size: 1.15em; margin: .4em 0 0; }
+.amfie-breadcrumb { font-size: .85em; }
+.amfie-breadcrumb a { color: var(--amfie-blue); text-decoration: none; }
+
+/* Hero + liens rapides */
+.amfie-hero { background: var(--amfie-light) var(--amfie-hero-img, none) center / cover no-repeat; padding: 80px 0 60px; }
+.amfie-hero__title { color: var(--amfie-blue); font-size: clamp(2rem, 4vw, 3rem); max-width: 14em; }
+.amfie-quick-links { background: var(--amfie-navy); color: #fff; padding: 28px; border-radius: var(--amfie-radius); max-width: 720px; margin-top: 40px; }
+.amfie-quick-links__title { color: #fff; margin-top: 0; font-size: 1.25rem; }
+.amfie-quick-links__items { display: flex; flex-wrap: wrap; gap: 12px; }
+.amfie-quick-links .amfie-btn--outline { color: #fff; }
+
+/* Présentation */
+.amfie-intro { padding: 56px 0; }
+.amfie-intro__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.amfie-intro--reverse .amfie-intro__media { order: -1; }
+.amfie-intro__media img { width: 100%; height: auto; border-radius: var(--amfie-radius); display: block; }
+
+/* Grille de cartes */
+.amfie-feature-grid { padding: 48px 0; }
+.amfie-feature-grid__items { display: grid; grid-template-columns: repeat(var(--amfie-cols, 3), 1fr); gap: 24px; margin-top: 24px; counter-reset: amfie-card; }
+.amfie-card { background: #fff; border: 1px solid #d5e1ee; border-radius: var(--amfie-radius); padding: 24px; }
+.amfie-feature-grid--plain .amfie-card { border: 0; padding: 0; }
+.amfie-feature-grid--numbered .amfie-card::before { counter-increment: amfie-card; content: counter(amfie-card); display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--amfie-blue); color: #fff; font-weight: 700; }
+.amfie-card__icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+.amfie-card__title { margin: 0 0 .4em; color: var(--amfie-navy); font-size: 1.15rem; }
+
+/* Chiffres clés */
+.amfie-stats { background: var(--amfie-navy); color: #fff; padding: 48px 0; }
+.amfie-stats h2 { color: #fff; }
+.amfie-stats__items { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; text-align: center; }
+.amfie-stat__value { display: block; font-size: 2.6rem; line-height: 1; }
+
+/* Sections texte */
+.amfie-text-section { padding: 40px 0; }
+.amfie-text-section--highlight { background: var(--amfie-light); }
+.amfie-text-section--narrow .amfie-container { max-width: 760px; }
+
+/* Checklist / digital / CTA */
+.amfie-checklist, .amfie-digital { padding: 48px 0; }
+.amfie-checklist__items { list-style: none; padding: 0; display: grid; gap: 8px; }
+.amfie-checklist__items li::before { content: "✓"; color: var(--amfie-blue); font-weight: 700; margin-right: .6em; }
+.amfie-digital { background: var(--amfie-light); }
+.amfie-digital__steps { padding-left: 1.2em; display: grid; gap: 6px; }
+.amfie-contact-cta { background: var(--amfie-bordeaux); color: #fff; padding: 40px 0; text-align: center; }
+.amfie-contact-cta h2 { color: #fff; margin-top: 0; }
+.amfie-contact-cta .amfie-btn--solid { background: #fff; color: var(--amfie-bordeaux); border-color: #fff; }
+
+/* Actualités */
+.amfie-news { padding: 48px 0; }
+.amfie-news__items { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin: 24px 0; }
+.amfie-news__item { border-top: 3px solid var(--amfie-blue); padding-top: 12px; }
+.amfie-news__item time { font-size: .85em; opacity: .75; }
+.amfie-news__cat { margin-left: .6em; font-size: .75em; text-transform: uppercase; letter-spacing: .05em; color: var(--amfie-bordeaux); }
+.amfie-news__item h3 { margin: .3em 0; }
+.amfie-news__item a { color: var(--amfie-navy); text-decoration: none; }
+
+/* FAQ */
+.amfie-faq { padding: 40px 0; }
+.amfie-faq-item { border-bottom: 1px solid #d5e1ee; padding: 14px 0; }
+.amfie-faq-item summary { cursor: pointer; font-weight: 600; color: var(--amfie-navy); }
+
+/* Contact / liens */
+.amfie-contact-card, .amfie-link-list { padding: 40px 0; }
+.amfie-contact-card address { font-style: normal; line-height: 1.8; }
+.amfie-link-list__items { display: grid; gap: 8px; }
+
+@media (max-width: 781px) {
+	.amfie-intro__grid { grid-template-columns: 1fr; }
+	.amfie-intro--reverse .amfie-intro__media { order: 0; }
+	.amfie-feature-grid__items { grid-template-columns: 1fr; }
+}
+
+/* Éditeur */
+.amfie-ed { border: 1px dashed #9fb3c8; border-radius: 4px; padding: 12px; margin-block: 8px; background: #fafcfe; }
+.amfie-ed__label { font: 600 11px/1 system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: var(--amfie-blue); margin-bottom: 8px; }
+.amfie-ed__plain { width: 100%; min-height: 4.5em; border: 1px solid #ccd6e0; border-radius: 3px; padding: 6px; font: inherit; }
+.amfie-ed--feature-grid .block-editor-inner-blocks > .block-editor-block-list__layout, .amfie-ed--stats .block-editor-inner-blocks > .block-editor-block-list__layout, .amfie-ed--quick-links .block-editor-inner-blocks > .block-editor-block-list__layout { display: flex; flex-wrap: wrap; gap: 12px; }
+.amfie-ed--feature-grid > .block-editor-inner-blocks > .block-editor-block-list__layout > * { flex: 1 1 220px; }

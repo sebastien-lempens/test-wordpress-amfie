@@ -1,0 +1,47 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@source "../../templates/**/*.html";
+@source "../../parts/**/*.html";
+@source "../../patterns/**/*.php";
+@source "../../src/**/*.{js,ts}";
+
+@theme {
+	--color-base: var(--wp--preset--color--base);
+	--color-contrast: var(--wp--preset--color--contrast);
+	--color-accent-1: var(--wp--preset--color--accent-1);
+	--color-accent-2: var(--wp--preset--color--accent-2);
+	--color-accent-3: var(--wp--preset--color--accent-3);
+	--color-accent-4: var(--wp--preset--color--accent-4);
+	--color-accent-5: var(--wp--preset--color--accent-5);
+	--color-accent-6: var(--wp--preset--color--accent-6);
+
+	--font-sans: "Manrope", sans-serif;
+	--font-mono: "Fira Code", monospace;
+
+	--spacing-10: 0.625rem;
+	--spacing-20: var(--wp--preset--spacing--20);
+	--spacing-30: var(--wp--preset--spacing--30);
+	--spacing-40: var(--wp--preset--spacing--40);
+	--spacing-50: var(--wp--preset--spacing--50);
+	--spacing-60: var(--wp--preset--spacing--60);
+	--spacing-70: var(--wp--preset--spacing--70);
+	--spacing-80: var(--wp--preset--spacing--80);
+
+	--text-small: var(--wp--preset--font-size--small);
+	--text-medium: var(--wp--preset--font-size--medium);
+	--text-large: var(--wp--preset--font-size--large);
+	--text-x-large: var(--wp--preset--font-size--x-large);
+	--text-xx-large: var(--wp--preset--font-size--xx-large);
+
+	--container-content: var(--wp--style--global--content-size, 645px);
+	--container-wide: var(--wp--style--global--wide-size, 1340px);
+}
+@layer base {
+	h2 {
+		&.wp-block-heading { 
+			@apply opacity-25 text-[5rem]! font-bold mb-40; 
+		}
+	}
+}
