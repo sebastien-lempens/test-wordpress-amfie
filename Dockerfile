@@ -36,3 +36,15 @@ RUN find "${PLUGINS_DIR}/wp-graphql-gutenberg/src" -name '*.php' \
 # without an attribute comment; the plugin expects an array (array_merge).
 RUN find "${PLUGINS_DIR}/wp-graphql-gutenberg/src" -name 'Block.php' \
 	-exec sed -i "s/\$attributes = \$data\['attrs'\];/\$attributes = \$data['attrs'] ?? [];/" {} +
+
+# Custom plugin + theme baked in (no bind mounts: they break on Coolify).
+COPY --chown=www-data:www-data wp-files/plugins/amfie-blocks ${PLUGINS_DIR}/amfie-blocks
+COPY --chown=www-data:www-data wp-files/twentytwentyfive /usr/src/wordpress/wp-content/themes/twentytwentyfive
+
+# The base entrypoint seeds the wp_data volume only once; this wrapper
+# refreshes the custom plugin/theme from the image on every start.
+COPY docker-entrypoint-amfie.sh /usr/local/bin/docker-entrypoint-amfie.sh
+RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint-amfie.sh \
+	&& chmod +x /usr/local/bin/docker-entrypoint-amfie.sh
+ENTRYPOINT ["docker-entrypoint-amfie.sh"]
+CMD ["apache2-foreground"]

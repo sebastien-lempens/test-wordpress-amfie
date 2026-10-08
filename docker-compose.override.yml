@@ -6,3 +6,5 @@ services:
       WP_ENVIRONMENT_TYPE: local
     volumes:
       - ./wp-files/wp-config.php:/var/www/html/wp-config.php
+      - ./wp-files/plugins/amfie-blocks:/var/www/html/wp-content/plugins/amfie-blocks
+      - ./wp-files/twentytwentyfive:/var/www/html/wp-content/themes/twentytwentyfive

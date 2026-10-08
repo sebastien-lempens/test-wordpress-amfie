@@ -1,0 +1,6 @@
+.git
+.env
+README.local.md
+_backup-twentytwentyfive-original
+amfie-blocks.zip
+**/node_modules
