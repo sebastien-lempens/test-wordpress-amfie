@@ -48,3 +48,6 @@ RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint-amfie.sh \
 	&& chmod +x /usr/local/bin/docker-entrypoint-amfie.sh
 ENTRYPOINT ["docker-entrypoint-amfie.sh"]
 CMD ["apache2-foreground"]
+
+# Allow large uploads (e.g. All-in-One WP Migration imports)
+RUN printf 'upload_max_filesize=512M\npost_max_size=512M\n' > /usr/local/etc/php/conf.d/uploads.ini
